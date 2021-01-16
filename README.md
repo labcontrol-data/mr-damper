@@ -1,9 +1,4 @@
 # mr-damper
-This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper".
-
-[![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
-
-**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
 
 <p align="center"><a href="http://www.labcontrol.xyz/dokuwiki" target="_blank" rel="noopener"><img src="images/logo.png"></a></p>
 
@@ -11,6 +6,15 @@ This page provides information about the project developed in Labcontrol called 
 
 [**Labcontrol**](http://www.labcontrol.xyz/dokuwiki) 
     Lab Control is a research laboratory located at Universidade Tecnológica Federal do Paraná (UTFPR), Brazil. UTFPR is a public Brazilian university located in the Paraná state, Brazil. Lab Control develops research on Control Systems and Automation.  The Scientific Director of Labcontrol is [Prof. Dr. Alessandro N. Vargas](http://www.anvargas.com). Most projects developed in the Labcontrol are [described here](http://www.anvargas.com/blog) 
+
+About
+============
+
+This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper". Experiments were carried out in practice in a laboratory testbed, and the data contained in this Github repo were collected in those experiments. 
+
+[![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
+
+**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
 
 
 `maincode.m` is a MATLAB(R) script that calls Simulink-Matlab, generates simulation data, and generates figures. The figures contain both simulation and real-time data collected in a laboratory testbed.
