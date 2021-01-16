@@ -174,7 +174,7 @@ vel3 = x_FS(tt1*10,2);
 
 figure(8)
 plot(forc2,'DisplayName','Experimental');
-xlabel('Amostras'); ylabel('For�a (N)');
+xlabel('Amostras'); ylabel('Force (N)');
 grid on
 hold on
 plot(forc3,'DisplayName','Model');
@@ -197,3 +197,63 @@ t = TS*[0:max(size(forc2))-1];
 savefile = 'data_simulation_Joao_parte2.mat';
 save(savefile,'forceReal','forceSimulated','TS','t','-v7');
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% only simulation: two-story building of the Dahl model
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+load('data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat')
+
+vecT = tiempoSim;
+displacSim_x1_semMR =  displacSim_x1;
+displacSim_x2_semMR =  displacSim_x2;
+accelSim_x1_semMR =  accelSim_x1;
+accelSim_x2_semMR =  accelSim_x2;
+
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat')
+
+displacSim_x1_comMR =  displacSim_x1;
+displacSim_x2_comMR =  displacSim_x2;
+accelSim_x1_comMR = accelSim_x1;
+accelSim_x2_comMR = accelSim_x2;
+
+figure(10)
+subplot(2,2,1)
+hold on
+plot(vecT , 1000*displacSim_x1_semMR ,'b','LineWidth',1);
+plot(vecT , 1000*displacSim_x1_comMR ,'r','LineWidth',2);
+hold off
+ylabel('displac. 1st floor')
+xlabel('time (sec.)')
+legend('no MR-damper','with MR damper')
+title('First floor')
+
+subplot(2,2,2)
+hold on
+plot(vecT , 1000*displacSim_x2_semMR,'b','LineWidth',1)
+plot(vecT , 1000*displacSim_x2_comMR,'r','LineWidth',0.5)
+hold off
+ylabel('displac. 2nd floor')
+xlabel('time (sec.)')
+legend('no MR-damper','with MR damper')
+title('Second floor')
+
+subplot(2,2,3)
+hold on
+plot(vecT , accelSim_x1_semMR ,'b','LineWidth',1)
+plot(vecT , accelSim_x1_comMR,'r','LineWidth',2)
+hold off
+ylabel('acceler. 1st floor')
+xlabel('time (sec.)')
+legend('no MR-damper','with MR damper')
+
+
+subplot(2,2,4)
+hold on
+plot(vecT , accelSim_x2_semMR ,'b','LineWidth',1)
+plot(vecT , accelSim_x2_comMR,'r','LineWidth',0.5)
+hold off
+ylabel('acceler. 2nd floor')
+xlabel('time (sec.)')
+legend('no MR-damper','with MR damper')
