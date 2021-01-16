@@ -1,10 +1,9 @@
 # mr-damper
 This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper".
 
-**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)
+**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
 
-[![Build Status](https://travis-ci.org/matlab2tikz/matlab2tikz.svg?branch=master)](https://travis-ci.org/matlab2tikz/matlab2tikz) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18605.svg)](http://dx.doi.org/10.5281/zenodo.18605)
-
+[![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
 
 <p align="center"><a href="http://www.labcontrol.xyz/dokuwiki" target="_blank" rel="noopener"><img src="images/logo.png"></a></p>
 
