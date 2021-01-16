@@ -1,9 +1,9 @@
 # mr-damper
 This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper".
 
-**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
-
 [![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
+
+**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
 
 <p align="center"><a href="http://www.labcontrol.xyz/dokuwiki" target="_blank" rel="noopener"><img src="images/logo.png"></a></p>
 
@@ -13,62 +13,32 @@ This page provides information about the project developed in Labcontrol called 
     Lab Control is a research laboratory located at Universidade Tecnológica Federal do Paraná (UTFPR), Brazil. UTFPR is a public Brazilian university located in the Paraná state, Brazil. Lab Control develops research on Control Systems and Automation.  The Scientific Director of Labcontrol is [Prof. Dr. Alessandro N. Vargas](http://www.anvargas.com). Most projects developed in the Labcontrol are [described here](http://www.anvargas.com/blog) 
 
 
-`matlab2tikz` is a MATLAB(R) script to convert native MATLAB(R) figures to TikZ/Pgfplots figures that integrate seamlessly in LaTeX documents.
+`maincode.m` is a MATLAB(R) script that calls Simulink-Matlab, generates simulation data, and generates figures. The figures contain both simulation and real-time data collected in a laboratory testbed.
 
-To download the official releases and rate `matlab2tikz`, please visit its page on [FileExchange](http://www.mathworks.com/matlabcentral/fileexchange/22022).
+For more details about the experimental data, as long as the corresponding academic publications, please visit the project page on [FileExchange](http://www.anvargas.com/blog).
 
-`matlab2tikz` converts most MATLAB(R) figures, including 2D and 3D plots. 
-For plots constructed with third-party packages, however, your mileage may vary.
 
 Installation
 ============
 
-1. Extract the ZIP file (or clone the git repository) somewhere you can easily reach it. 
-2. Add the `src/` folder to your path in MATLAB/Octave: e.g. 
+1. Extract the ZIP file (or clone the git repository) in your computer.
+2. Add the folders `matlab-code/` and `data/` to your path in MATLAB/Octave: e.g. 
     - using the "Set Path" dialog in MATLAB, or 
     - by running the `addpath` function from your command window or `startup` script.
 
-Make sure that your LaTeX installation is up-to-date and includes:
-
-* [TikZ/PGF](http://www.ctan.org/pkg/pgf) version 3.0 or higher
-* [Pgfplots](http://www.ctan.org/pkg/pgfplots) version 1.13 or higher
-* [Amsmath](https://www.ctan.org/pkg/amsmath) version 2.14 or higher
-* [Standalone](http://www.ctan.org/pkg/standalone) (optional)
-
-It is recommended to use the latest stable version of these packages.
-Older versions may work depending on the actual MATLAB(R) figure you are converting.
+Make sure that you are running Matlab 2017a (or a newer version). Older versions may work depending on the actual MATLAB(R) you are running.
 
 Usage
 =====
 
-Typical usage of `matlab2tikz` consists of converting your MATLAB plot to a TikZ/LaTeX file and then running a LaTeX compiler to produce your document.
+Typical usage of `maincode.m` consists of running your MATLAB. The code will generate ten figures.
 
 MATLAB
 ------
-  1. Generate your plot in MATLAB(R).
-
-  2. Run `matlab2tikz`, e.g. using
-
-
-Remarks
--------
-Most functions accept numerous options; you can check them out by inspecting their help:
-
-```matlab
-help matlab2tikz
-```
-
-Sometimes, MATLAB(R) plots contain some features that impede conversion to LaTeX; e.g. points that are far outside of the actual bounding box.
-You can invoke the `cleanfigure` function to remove such unwanted entities before calling `matlab2tikz`:
-
-```matlab
-cleanfigure;
-matlab2tikz('myfile.tex');
-```
+  1. Run `maincode.m`, e.g. using
 
 More information
 ================
 
-* For more information about `matlab2tikz`, have a look at our [GitHub repository](https://github.com/matlab2tikz/matlab2tikz). If you are a good MATLAB(R) programmer or LaTeX writer, you are always welcome to help improving `matlab2tikz`!
-* Some common problems and pit-falls are documented in our [wiki](https://github.com/matlab2tikz/matlab2tikz/wiki/Common-problems).
-* If you experience (other) bugs or would like to request a feature, please visit our [issue tracker](https://github.com/matlab2tikz/matlab2tikz/issues). 
+* For more information about `maincode.m`, visit the page from the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com). You are always welcome to help improving the code in `maincode.m`.
+* If you want to use the data for your research, please feel free to contact the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com). The author can help you to interpret the data according to your application, as well as suggesting you citations or books in which you can find more details about the project.
