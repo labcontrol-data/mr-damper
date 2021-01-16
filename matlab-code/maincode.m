@@ -198,7 +198,8 @@ save(savefile,'forceReal','forceSimulated','TS','t','-v7');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% only simulation: two-story building of the Dahl model
+% only simulation: two-story building linear model 
+% with the Dahl model
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 load('data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat')
