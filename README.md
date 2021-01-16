@@ -46,3 +46,6 @@ More information
 
 * For more information about `maincode.m`, visit the page from the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com). You are always welcome to help improving the code in `maincode.m`.
 * If you want to use the data for your research, please feel free to contact the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com). The author can help you to interpret the data according to your application, as well as suggesting you citations or books in which you can find more details about the project.
+
+[![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
+
