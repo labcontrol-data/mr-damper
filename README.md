@@ -4,13 +4,12 @@
 
 # [Labcontrol, Brazil](http://www.labcontrol.xyz/dokuwiki)
 
-[**Labcontrol**](http://www.labcontrol.xyz/dokuwiki) 
-    Lab Control is a research laboratory located at Universidade Tecnológica Federal do Paraná (UTFPR), Brazil. UTFPR is a public Brazilian university located in the Paraná state, Brazil. Lab Control develops research on Control Systems and Automation.  The Scientific Director of Labcontrol is [Prof. Dr. Alessandro N. Vargas](http://www.anvargas.com). Most projects developed in the Labcontrol are [described here](http://www.anvargas.com/blog) 
+[**Labcontrol**](http://www.labcontrol.xyz/dokuwiki)  is a research laboratory located at Universidade Tecnológica Federal do Paraná (UTFPR), Brazil. UTFPR is a Brazilian public university located in the Paraná state, Brazil. [**Labcontrol**](http://www.labcontrol.xyz/dokuwiki)  develops research on Control Systems and Automation. The Scientific Director of Labcontrol is Prof. Dr. Alessandro N. Vargas. The projects hosted in [**Labcontrol**](http://www.labcontrol.xyz/dokuwiki)  are [described here.](http://www.anvargas.com/blog)
 
 About
 ============
 
-This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper". Experiments were carried out in practice in a laboratory testbed, and the data contained in this Github repo were collected in those experiments. 
+This page provides information about the project developed in Labcontrol called "Shaking table with MR-damper." Experiments were carried out in practice in a laboratory testbed, and the data contained in this Github repository were collected in those experiments. 
 
 [![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
 
