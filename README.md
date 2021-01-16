@@ -1,7 +1,7 @@
 # mr-damper
 This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper".
 
-**Please [update manually](http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz?download=true) if you are not using matlab2tikz 1.0.0 or newer!**
+**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)
 
 [![Build Status](https://travis-ci.org/matlab2tikz/matlab2tikz.svg?branch=master)](https://travis-ci.org/matlab2tikz/matlab2tikz) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18605.svg)](http://dx.doi.org/10.5281/zenodo.18605)
 
