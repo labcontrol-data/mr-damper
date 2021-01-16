@@ -4,8 +4,6 @@
 % email: avargas@utfpr.edu.br
 % www.anvargas.com
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 clear all, close all, clc, format long, format compact,
 
 load('data_simulation_4.1_MRdamper.mat')
