@@ -16,9 +16,9 @@ This page provides information about the project developed in Labcontrol called 
 **Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
 
 
-`maincode.m` is a MATLAB(R) script that calls Simulink-Matlab, generates simulation data, and generates figures. The figures contain both simulation and real-time data collected in a laboratory testbed.
+`maincode.m` is a MATLAB(R) script that calls Simulink-Matlab and generates simulation data. The script also generates figures. The figures contain both simulation and real-time data collected in a laboratory testbed.
 
-For more details about the experimental data, as long as the corresponding academic publications, please visit the project page on [FileExchange](http://www.anvargas.com/blog).
+For more details about the experimental data, as long as the corresponding academic publications, please visit [the project page](http://www.anvargas.com/blog).
 
 
 Installation
@@ -29,22 +29,23 @@ Installation
     - using the "Set Path" dialog in MATLAB, or 
     - by running the `addpath` function from your command window or `startup` script.
 
-Make sure that you are running Matlab 2017a (or a newer version). Older versions may work depending on the actual MATLAB(R) you are running.
+Make sure that you are running Matlab 2017a (or a newer version). Older versions may work, but it is uncertain.
 
 Usage
 =====
 
-Typical usage of `maincode.m` consists of running your MATLAB. The code will generate ten figures.
+Typical usage of `maincode.m` consists of running it in your MATLAB. The code generates ten figures.
 
 MATLAB
 ------
-  1. Run `maincode.m`, e.g. using
+  1. Run `maincode.m`.
 
 More information
 ================
 
-* For more information about `maincode.m`, visit the page from the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com). You are always welcome to help improving the code in `maincode.m`.
-* If you want to use the data for your research, please feel free to contact the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com). The author can help you to interpret the data according to your application, as well as suggesting you citations or books in which you can find more details about the project.
+* For more information about `maincode.m`, visit the author's page [Prof. Alessandro N. Vargas](http://www.anvargas.com). You are welcome to help improving the code in `maincode.m`.
+* If you want to use the data for your research, you are free to use it. Please contact the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com) 
+and let him know about your project. Depending on your research area, the author can help you interpret the data according to your application. The author can also suggest papers and books in which can be useful in your research.
 
 [![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
 
