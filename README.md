@@ -1,10 +1,18 @@
 # mr-damper
-Mr-damper
-**The updater in matlab2tikz 0.6.0 (and older) no longer works.**
+This page provides information about the project developed in Labcontrol called "Shaking table with mr-damper".
+
 **Please [update manually](http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz?download=true) if you are not using matlab2tikz 1.0.0 or newer!**
 
 [![Build Status](https://travis-ci.org/matlab2tikz/matlab2tikz.svg?branch=master)](https://travis-ci.org/matlab2tikz/matlab2tikz) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18605.svg)](http://dx.doi.org/10.5281/zenodo.18605)
-![matlab2tikz](https://raw.githubusercontent.com/wiki/matlab2tikz/matlab2tikz/matlab2tikz.png)
+
+
+<p align="center"><a href="http://www.labcontrol.xyz/dokuwiki" target="_blank" rel="noopener"><img src="images/logo.png"></a></p>
+
+# [Labcontrol, Brazil](http://www.labcontrol.xyz/dokuwiki)
+
+[**Labcontrol**](http://www.labcontrol.xyz/dokuwiki) 
+    Lab Control is a research laboratory located at Universidade Tecnológica Federal do Paraná (UTFPR), Brazil. UTFPR is a public Brazilian university located in the Paraná state, Brazil. Lab Control develops research on Control Systems and Automation.  The Scientific Director of Labcontrol is [Prof. Dr. Alessandro N. Vargas](http://www.anvargas.com). Most projects developed in the Labcontrol are [described here](http://www.anvargas.com/blog) 
+
 
 `matlab2tikz` is a MATLAB(R) script to convert native MATLAB(R) figures to TikZ/Pgfplots figures that integrate seamlessly in LaTeX documents.
 
