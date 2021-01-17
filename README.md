@@ -53,7 +53,8 @@ Citation
 ------
 How to cite the data of this repository:
 
-``` \@article{vargasGithub2021,
+```
+@misc{vargasGithub2021,
     author       = {A. N. Vargas},
     title        = {Data and documents for the shaking table with {MR}-damper},
     month        = {Jan},
@@ -64,5 +65,6 @@ How to cite the data of this repository:
     url          = {https://zenodo.org/badge/latestdoi/330236633}
 };
 ```
+
 
 
