@@ -50,7 +50,19 @@ and let him know about your project. Depending on your research area, the author
 [![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
 
 Citation
-================
+------
 How to cite the data of this repository:
+
+``` \@article{vargasGithub2021,
+    author       = {A. N. Vargas},
+    title        = {Data and documents for the shaking table with {MR}-damper},
+    month        = {Jan},
+    year         = 2021,
+    doi          = {10.5281/zenodo.4445334},
+    version      = {1.0.3},
+    publisher    = {Zenodo},
+    url          = {https://zenodo.org/badge/latestdoi/330236633}
+};
+```
 
 
