@@ -9,7 +9,7 @@
 About
 ============
 
-This page provides information about the project developed in Labcontrol called "Shaking table with MR-damper." Experiments were carried out in practice in a laboratory testbed, and the data contained in this Github repository were collected in those experiments. 
+This page provides information about the project developed in Labcontrol called ["Shaking table with MR-damper."](http://www.anvargas.com/blog/mrdamper.html)  Experiments were carried out in practice in a laboratory testbed, and the data contained in this Github repository were collected in those experiments. 
 
 [![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
 
