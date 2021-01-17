@@ -43,7 +43,7 @@ MATLAB
 More information
 ================
 
-* For more information about `maincode.m`, visit the author's page [Prof. Alessandro N. Vargas](http://www.anvargas.com). You are welcome to help improving the code in `maincode.m`.
+* For more information about `maincode.m`, visit the author's page: [Prof. Alessandro N. Vargas](http://www.anvargas.com). You are welcome to help improving the code.
 * If you want to use the data for your research, you are free to use it. Please contact the author [Prof. Alessandro N. Vargas at](http://www.anvargas.com) 
 and let him know about your project. Depending on your research area, the author can help you interpret the data according to your application. The author can also suggest papers and books in which can be useful in your research.
 
