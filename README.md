@@ -13,7 +13,7 @@ This page provides information about the project developed in Labcontrol called 
 
 [![DOI](https://zenodo.org/badge/330236633.svg)](https://zenodo.org/badge/latestdoi/330236633)
 
-**Please check more details about this project [in the blog page](http://www.anvargas.com/blog)**
+**Please check more details about this project in the page detailing the ["Shaking table with MR-damper."](http://www.anvargas.com/blog/mrdamper.html)**
 
 
 `maincode.m` is a MATLAB(R) script that calls Simulink-Matlab and generates simulation data. The script also generates figures. The figures contain both simulation and real-time data collected in a laboratory testbed.
