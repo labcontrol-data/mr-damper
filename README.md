@@ -56,7 +56,7 @@ How to cite the data of this repository:
 ```
 @misc{vargasGithub2021,
     author       = {A. N. Vargas},
-    title        = {Data and documents for the shaking table with {MR}-damper},
+    title        = {Data, source code, and documents for the shaking table with {MR}-damper}},
     month        = {Jan},
     year         = 2021,
     doi          = {10.5281/zenodo.4445334},
