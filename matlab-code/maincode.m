@@ -4,6 +4,8 @@
 % email: avargas@utfpr.edu.br
 % www.anvargas.com
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 clear all, close all, clc, format long, format compact,
 
 load('data_simulation_4.1_MRdamper.mat')
@@ -198,8 +200,7 @@ save(savefile,'forceReal','forceSimulated','TS','t','-v7');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% only simulation: two-story building linear model 
-% with the Dahl model
+% only simulation: two-story building of the Dahl model
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 load('data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat')
@@ -256,3 +257,253 @@ hold off
 ylabel('acceler. 2nd floor')
 xlabel('time (sec.)')
 legend('no MR-damper','with MR damper')
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This part starts the simulation of the two-store structure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fid=fopen('elcentro.dat','r');
+text=textscan(fid,'%f %f');
+fclose(fid);
+t=text{1,1};
+dt=t(2)-t(1);
+xgtt=0.1*9.80665*text{1,2};  % unity in N/m^2 (reduced by factor 0.1)
+
+ddotxg = [];
+for i=1:max(size(xgtt))
+    ddotxg = [ddotxg   xgtt(i)*ones(1,20)];
+end
+
+f=70;
+f_cutoff = 2; % cutoff frequency
+fnorm =f_cutoff/(f/2); % normalized cut off freq, you can change it to any value depending on your requirements
+[b1,a1] = butter(4,fnorm,'low'); % Low pass Butterworth filter of order 10
+ddotxg = filtfilt(b1,a1,ddotxg); % filtering
+
+TS = 0.001;
+t = TS*[1:max(size(ddotxg))];
+
+figure(1)
+hold on
+plot(t,ddotxg,'b','LineWidth',2)
+plot(dt*[1:max(size(xgtt))],xgtt,'r')
+hold off    
+title('El Centro earthquake')
+ylabel('accel. N/m^2')
+xlabel('time(sec.)')
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% simulation of the two-story Dahl model
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+k1 = 0.682*10^4;
+k2 = 0.822*10^4;
+m1 = 24.3;
+m2 = 24.3;
+c1 = 0.939;
+c2 = 0.29;
+
+Ac = [0             1           0          0;
+     -(k1+k2)/m1  -(c1+c2)/m1   k2/m1    c2/m1;
+      0             0           0          1;
+      k2/m2        c2/m2        -k2/m2    -c2/m2];
+Bc = [ 0   0  0;
+       -1   -1/m1  0;
+       0   0  0;
+       -1  0  -1/m2;];
+Cc = eye(4,4);
+Dc = zeros(4,3);
+x0 = [0 ; 0 ; 0; 0];
+
+%%%%%%%%%%%%%%%%%%
+FlagSelect = 1;   % select either '0' or '1' (without or with MR damper)
+%%%%%%%%%%%%%%%%%%
+
+Kw=59.46;     % 0V in the damper
+Kx=0.6835;    % 0V in the damper
+rho = 30.57;  % 0V in the damper 
+Volts = 0;    % 0V in the damper
+
+%Kx=2.2698;      % 1.98V in the damper
+%Kw=412.48;      % 1.98V in the damper
+%rho=10.95;      % 1.98V in the damper
+%Volts = 1.98;   % 1.98V in the damper
+
+assignin ('base','Kw',Kw)
+assignin ('base','Kx',Kx)
+assignin ('base','Acceleration',ddotxg')
+assignin ('base','Time',t')
+assignin ('base','dt',TS)
+
+% this piece of code simulates the two-story model
+%-----------------
+sim('twoStoryBuildingDahldissertacaoJoao')
+%-----------------
+
+load('MyOutput.mat');
+load('dotxt.mat');
+
+velocitySimulated = dotxt(2,1:end-1);
+forceSimulated =  MyOutput(2,1:end-1);
+
+load('SistemaOutput.mat');
+tiempoSim = SistemaOutput(1,:);
+displacSim_x1= SistemaOutput(2,:);
+accelSim_x1 = SistemaOutput(3,:);
+displacSim_x2= SistemaOutput(4,:);
+accelSim_x2 = SistemaOutput(5,:);
+
+figure(31),
+subplot(2,2,1)
+plot(tiempoSim, displacSim_x1,'LineWidth',2)
+xlabel('time(sec)'), ylabel('displac. x1'),
+grid,
+title('First floor')
+axis([0 54 -0.01 0.01])
+
+subplot(2,2,2)
+plot(tiempoSim, displacSim_x2,'LineWidth',2)
+xlabel('time(sec)'), ylabel('displac. x2'),
+grid,
+title('Second floor')
+axis([0 54 -0.02 0.02])
+
+subplot(2,2,3)
+plot(tiempoSim, accelSim_x1,'k','LineWidth',2)
+xlabel('time(sec)'), ylabel('accelerac. x1'),
+axis([0 54 -0.2 0.2])
+grid,
+
+subplot(2,2,4)
+plot(tiempoSim, accelSim_x2,'k','LineWidth',2)
+xlabel('time(sec)'), ylabel('accelerac. x2'),
+axis([0 54 -0.2 0.2])
+grid,
+
+if FlagSelect == 0
+    savefile = 'data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat';
+else
+    if Volts == 0
+        savefile = 'data_simulation_TwoStoryBuildingJoao_ComMRDamper0V.mat';
+    else
+        savefile = 'data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat';
+    end
+end
+save(savefile,'t','ddotxg','TS','tiempoSim','displacSim_x1','accelSim_x1','displacSim_x2','accelSim_x2','-v7');
+
+figure(32)
+subplot(2,1,1)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper0V.mat');
+hold on
+plot(tiempoSim, displacSim_x1,'b','LineWidth',2)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+plot(tiempoSim, displacSim_x1,'k','LineWidth',1)
+hold off
+xlabel('time(sec)'), ylabel('displac. x1'),
+legend('0V damper','1.98V damper'),
+title('displacements')
+
+subplot(2,1,2)
+hold on
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper0V.mat');
+plot(tiempoSim, displacSim_x2,'b','LineWidth',2)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+plot(tiempoSim, displacSim_x2,'k','LineWidth',1)
+hold off
+xlabel('time(sec)'), ylabel('displac. x2'),
+legend('0V damper','1.98V damper'),
+
+
+figure(33)
+subplot(2,1,1)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper0V.mat');
+hold on
+plot(tiempoSim, accelSim_x1,'b','LineWidth',2)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+plot(tiempoSim, accelSim_x1,'k','LineWidth',1)
+hold off
+xlabel('time(sec)'), ylabel('accelSim. x1'),
+legend('0V damper','1.98V damper'),
+title('accelerations')
+
+subplot(2,1,2)
+hold on
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper0V.mat');
+plot(tiempoSim, accelSim_x2,'b','LineWidth',2)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+plot(tiempoSim, accelSim_x2,'k','LineWidth',1)
+hold off
+xlabel('time(sec)'), ylabel('accelSim. x2'),
+legend('0V damper','1.98V damper'),
+
+
+
+figure(34)
+subplot(2,1,1)
+load('data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat');
+hold on
+plot(tiempoSim, accelSim_x1,'r','LineWidth',2)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+plot(tiempoSim, accelSim_x1,'k','LineWidth',1)
+hold off
+xlabel('time(sec)'), ylabel('accelSim. x1'),
+legend('NO damper','1.98V damper'),
+title('accelerations')
+
+subplot(2,1,2)
+hold on
+load('data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat');
+plot(tiempoSim, accelSim_x2,'r','LineWidth',2)
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+plot(tiempoSim, accelSim_x2,'k','LineWidth',1)
+hold off
+xlabel('time(sec)'), ylabel('accelSim. x2'),
+legend('NO damper','1.98V damper'),
+
+
+
+load('data_simulation_TwoStoryBuildingJoao_SemMRDamper.mat');
+disp('=========SEM MR damper=============')
+max_displacSim_x1 = 1000*max(abs(displacSim_x1))
+max_displacSim_x2 = 1000*max(abs(displacSim_x2))
+max_accelSim_x1 = max(abs(accelSim_x1))
+max_accelSim_x2 = max(abs(accelSim_x2))
+disp('===========================')
+
+
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper0V.mat');
+disp('==========com MR DAMPER 0V =============')
+max_displacSim_x1 = 1000*max(abs(displacSim_x1))
+max_displacSim_x2 = 1000*max(abs(displacSim_x2))
+max_accelSim_x1 = max(abs(accelSim_x1))
+max_accelSim_x2 = max(abs(accelSim_x2))
+disp('===========================')
+
+load('data_simulation_TwoStoryBuildingJoao_ComMRDamper198V.mat');
+disp('==========com MR damper 1.98v=================')
+max_displacSim_x1 = 1000*max(abs(displacSim_x1))
+max_displacSim_x2 = 1000*max(abs(displacSim_x2))
+max_accelSim_x1 = max(abs(accelSim_x1))
+max_accelSim_x2 = max(abs(accelSim_x2))
+disp('===========================')
+
+figure(35)
+hold on
+plot(t, forceSimulated , 'k','LineWidth',3 );
+title('DahlSimulated');
+xlabel('time (sec)'),ylabel('y')
+legend('forceReal','displacement','forceSimulated')
+hold off
+grid
+
+figure(36)
+hold on
+plot(velocitySimulated,forceSimulated, 'r','LineWidth',2 )
+%plot(velocity_real,force_real,'LineWidth',1,'Color','b')
+title('DahlSimulated');
+xlabel('Velocity'),ylabel('outputForce')
+grid
+
+savefile = 'data_simulation_TwoStoryBuildingJoao.mat';
+save(savefile,'t','forceSimulated','TS','t','-v7');
